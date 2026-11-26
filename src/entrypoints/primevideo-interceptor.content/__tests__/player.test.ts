@@ -10,7 +10,7 @@ import {
   recordPlaybackResources,
   setupPlaybackResourcesCapture,
 } from "../playback-resources"
-import { listenForSubtitlesRequests, markUnmarkedPlayer, watchPlayingTitle } from "../player"
+import { listenForSubtitlesRequests, markUnmarkedVideo, watchPlayingTitle } from "../player"
 
 const RESOURCES_URL = "https://atv-ps.amazon.com/playback/prs/GetVodPlaybackResources?titleId="
 let title = 0
@@ -91,7 +91,7 @@ describe("the player's video", () => {
 
     const titleId = nextTitleId()
     recordPlaybackResources(titleId, resources(3_495_000))
-    markUnmarkedPlayer()
+    markUnmarkedVideo()
 
     expect(video.getAttribute("data-read-frog-title-id")).toBe(titleId)
   })
@@ -116,7 +116,7 @@ describe("the player's video", () => {
     setDuration(video, 1440)
 
     recordPlaybackResources(nextTitleId(), resources(1_440_000))
-    markUnmarkedPlayer()
+    markUnmarkedVideo()
 
     expect(video.getAttribute("data-read-frog-title-id")).toBe(playing)
   })

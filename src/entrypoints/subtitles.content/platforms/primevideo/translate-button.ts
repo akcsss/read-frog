@@ -1,14 +1,14 @@
 import type { SubtitlesProvidersAdapter } from "../../adapter/subtitles-providers-adapter"
 import { removeReactShadowHost } from "@/utils/react-shadow-host/create-shadow-host"
 import { renderSubtitlesTranslateButton } from "../../renderer/render-translate-button"
-import { findTopRightButtons } from "./dom"
+import { findTopRightRow } from "./dom"
 
 let mountedButton: HTMLElement | null = null
 
 /** Puts the button last in the top-right row, again each time Prime brings its controls back. */
 export function mountPrimeVideoTranslateButton(adapter: SubtitlesProvidersAdapter): void {
   if (mountedButton?.isConnected) return
-  const row = findTopRightButtons()
+  const row = findTopRightRow()
   const primeButton = row?.querySelector("button")
   if (!row || !primeButton) return
 

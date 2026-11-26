@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { afterEach, describe, expect, it } from "vitest"
-import { findTopRightButtons } from "../dom"
+import { findTopRightRow } from "../dom"
 
 // Prime's top-right row as the page has it, hashed class names left out.
 const TOP_RIGHT_ROW = `
@@ -16,16 +16,16 @@ afterEach(() => {
   document.body.innerHTML = ""
 })
 
-describe("findTopRightButtons", () => {
+describe("findTopRightRow", () => {
   it("finds the row holding Prime's fullscreen and settings buttons", () => {
     document.body.innerHTML = `<div id="dv-web-player">${TOP_RIGHT_ROW}</div>`
 
-    expect(findTopRightButtons()).toBe(document.getElementById("top-right"))
+    expect(findTopRightRow()).toBe(document.getElementById("top-right"))
   })
 
   it("finds nothing while the controls are hidden", () => {
     document.body.innerHTML = `<div id="dv-web-player"></div>`
 
-    expect(findTopRightButtons()).toBeNull()
+    expect(findTopRightRow()).toBeNull()
   })
 })

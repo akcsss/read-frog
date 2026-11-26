@@ -3,7 +3,7 @@ import {
   PRIME_VIDEO_PLAYBACK_RESOURCES_URL_PATTERN,
 } from "@/utils/constants/subtitles"
 
-/** What the content script needs of a title, as Prime sent it; the content script validates it. */
+/** A title as Prime sent it: its length to find the video by, the rest for the content script. */
 export interface PlaybackResources {
   durationMs: number
   timedText: unknown

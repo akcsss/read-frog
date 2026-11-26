@@ -18,7 +18,7 @@ function markPlayingTitle(video: HTMLVideoElement): void {
 }
 
 /** For resources that arrive after the video they belong to has its length. */
-export function markUnmarkedPlayer(): void {
+export function markUnmarkedVideo(): void {
   const video = document.querySelector<HTMLVideoElement>(PRIME_VIDEO_VIDEO_SELECTOR)
   if (video && !video.hasAttribute(PRIME_VIDEO_TITLE_ID_ATTRIBUTE)) markPlayingTitle(video)
 }

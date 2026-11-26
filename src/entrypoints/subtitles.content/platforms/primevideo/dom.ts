@@ -4,7 +4,7 @@ import {
 } from "@/utils/constants/subtitles"
 
 /** The row of buttons at the top right: the closest box that holds both fullscreen and settings. */
-export function findTopRightButtons(): Element | null {
+export function findTopRightRow(): Element | null {
   const settings = document.querySelector(PRIME_VIDEO_SETTINGS_BUTTON_SELECTOR)
   if (!settings) return null
 

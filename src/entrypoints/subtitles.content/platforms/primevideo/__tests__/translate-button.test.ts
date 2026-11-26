@@ -40,6 +40,9 @@ describe("mountPrimeVideoTranslateButton", () => {
     expect(button.tagName).toBe("READ-FROG-BUTTON")
     expect(button.style.position).toBe("relative")
     expect(button.style.zIndex).toBe("120")
+
+    mountPrimeVideoTranslateButton(adapter)
+    expect(row.lastElementChild).toBe(button)
   })
 
   it("puts the button back once Prime rebuilds its controls", () => {

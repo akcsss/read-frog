@@ -110,6 +110,22 @@ describe("primeVideoTrackSource", () => {
     expect(fetchMock).toHaveBeenCalledWith(subtitle("en-us").url)
   })
 
+  it("takes the subtitles in the language spoken over English", async () => {
+    const spokenInGerman = PLAYLIST.map((item) =>
+      item.type === "Main" ? { ...item, defaultAudioTrackId: "de-de_dialog_0" } : item,
+    )
+    postMessageRequest.mockResolvedValue(
+      response({
+        playlist: spokenInGerman,
+        timedText: { subtitleUrls: [subtitle("en-us"), subtitle("de-de")] },
+      }),
+    )
+
+    await primeVideoTrackSource.load("amzn1.dv.gti.1")
+
+    expect(fetchMock).toHaveBeenCalledWith(subtitle("de-de").url)
+  })
+
   it("falls back to English, then to the first listed, and never to forced narratives", async () => {
     const spokenInJapanese = PLAYLIST.map((item) =>
       item.type === "Main" ? { ...item, defaultAudioTrackId: "ja-jp_dialog_0" } : item,

@@ -25,9 +25,9 @@ describe("getPrimeVideoConfig", () => {
     renderPlayer({ controlsShown: true })
     const { selectors } = getPrimeVideoConfig()
 
-    expect(
-      document.querySelector(selectors.video)?.closest(selectors.playerContainer),
-    ).not.toBeNull()
+    const video = document.querySelector("video")
+    expect(document.querySelector(selectors.video)).toBe(video)
+    expect(document.querySelector(selectors.playerContainer)?.contains(video)).toBe(true)
   })
 
   it("reads the controls as shown only while Prime has them in the page", () => {

@@ -1,7 +1,7 @@
 import { defineContentScript } from "#imports"
 import { PRIME_VIDEO_MATCHES } from "@/utils/constants/subtitles"
 import { setupPlaybackResourcesCapture } from "./playback-resources"
-import { listenForSubtitlesRequests, markUnmarkedPlayer, watchPlayingTitle } from "./player"
+import { listenForSubtitlesRequests, markUnmarkedVideo, watchPlayingTitle } from "./player"
 
 export default defineContentScript({
   matches: PRIME_VIDEO_MATCHES,
@@ -13,7 +13,7 @@ export default defineContentScript({
     }
     ;(window as any).__READ_FROG_PRIME_VIDEO_INTERCEPTOR_INJECTED__ = true
 
-    setupPlaybackResourcesCapture(markUnmarkedPlayer)
+    setupPlaybackResourcesCapture(markUnmarkedVideo)
     watchPlayingTitle()
     listenForSubtitlesRequests()
   },
