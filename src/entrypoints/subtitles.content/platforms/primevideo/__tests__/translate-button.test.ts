@@ -31,12 +31,12 @@ afterEach(() => {
 })
 
 describe("mountPrimeVideoTranslateButton", () => {
-  it("puts the button first in the row, stacked as Prime's own buttons so an open menu leaves it clickable", () => {
+  it("puts the button last in the row, stacked as Prime's own buttons so an open menu leaves it clickable", () => {
     const row = renderRow()
 
     mountPrimeVideoTranslateButton(adapter)
 
-    const button = row.firstElementChild as HTMLElement
+    const button = row.lastElementChild as HTMLElement
     expect(button.tagName).toBe("READ-FROG-BUTTON")
     expect(button.style.position).toBe("relative")
     expect(button.style.zIndex).toBe("120")
@@ -49,7 +49,7 @@ describe("mountPrimeVideoTranslateButton", () => {
     const rebuilt = renderRow()
     mountPrimeVideoTranslateButton(adapter)
 
-    expect(rebuilt.firstElementChild?.tagName).toBe("READ-FROG-BUTTON")
+    expect(rebuilt.lastElementChild?.tagName).toBe("READ-FROG-BUTTON")
     expect(document.querySelectorAll("read-frog-button")).toHaveLength(1)
   })
 })

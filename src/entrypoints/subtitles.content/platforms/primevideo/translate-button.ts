@@ -5,7 +5,7 @@ import { findTopRightButtons } from "./dom"
 
 let mountedButton: HTMLElement | null = null
 
-/** Puts the button first in the top-right row, again each time Prime brings its controls back. */
+/** Puts the button last in the top-right row, again each time Prime brings its controls back. */
 export function mountPrimeVideoTranslateButton(adapter: SubtitlesProvidersAdapter): void {
   if (mountedButton?.isConnected) return
   const row = findTopRightButtons()
@@ -17,7 +17,7 @@ export function mountPrimeVideoTranslateButton(adapter: SubtitlesProvidersAdapte
   // Prime lifts its buttons above its open menus; ours goes as high, or a menu would cover it.
   const { position, zIndex } = getComputedStyle(primeButton)
   Object.assign(mountedButton.style, { position, zIndex })
-  row.prepend(mountedButton)
+  row.append(mountedButton)
 }
 
 export function removePrimeVideoTranslateButton(): void {
